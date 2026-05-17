@@ -533,6 +533,38 @@
     box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
 }
 
+.marker-cluster-small {
+    background: rgba(16, 185, 129, 0.2);
+}
+
+.marker-cluster-small div {
+    background: #10b981;
+    color: white;
+}
+
+.marker-cluster-medium {
+    background: rgba(245, 158, 11, 0.2);
+}
+
+.marker-cluster-medium div {
+    background: #f59e0b;
+    color: white;
+}
+
+.marker-cluster-large {
+    background: rgba(59, 130, 246, 0.2);
+}
+
+.marker-cluster-large div {
+    background: #3b82f6;
+    color: white;
+}
+
+.marker-cluster div {
+    font-weight: 700;
+    border-radius: 999px;
+}
+
 /* RESPONSIVE */
 @media (max-width: 991px) {
     .hero-title {

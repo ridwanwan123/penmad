@@ -2,6 +2,8 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
 @endpush
 
 @section('content')
@@ -29,20 +31,6 @@
                             </p>
                         </div>
                     </div>
-
-                    {{-- <div class="col-lg-4 mt-4 mt-lg-0">
-                        <div class="top-stat-card">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h3 id="totalMadrasah">0</h3>
-                                    <p>Total Madrasah</p>
-                                </div>
-                                <div class="stat-icon">
-                                    <i class="bi bi-mortarboard-fill"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
 
@@ -94,15 +82,15 @@
 
                             <!-- INFO -->
                             <div class="school-info">
-                                <h3 id="schoolName">MAN 4 Jakarta</h3>
+                                <h3 id="schoolName">-</h3>
 
-                                <div class="school-location">
+                                <div class="school-location" id="schoolLocation">
                                     <i class="bi bi-geo-alt-fill"></i>
-                                    Jakarta Timur
+                                    -
                                 </div>
 
-                                <p class="school-address">
-                                    Jl. Raya Pondok Gede No. 4, Kec. Duren Sawit, Jakarta Timur
+                                <p class="school-address" id="schoolAddress">
+                                    -
                                 </p>
                             </div>
                         </div>
@@ -140,7 +128,7 @@
                                         <span>NPSN</span>
                                     </div>
 
-                                    <div class="biodata-value">20103359</div>
+                                    <div class="biodata-value" id="schoolNpsn">-</div>
                                 </div>
 
                                 <!-- ITEM -->
@@ -153,7 +141,7 @@
                                         <span>Status Madrasah</span>
                                     </div>
 
-                                    <div class="biodata-value">Negeri</div>
+                                    <div class="biodata-value" id="schoolStatus">-</div>
                                 </div>
 
                                 <!-- ITEM -->
@@ -166,7 +154,7 @@
                                         <span>Kepala Madrasah</span>
                                     </div>
 
-                                    <div class="biodata-value">Drs. H. Abdul Rahman Hidayat</Table>, M.Pd.</div>
+                                    <div class="biodata-value" id="schoolKamad">-</div>
                                 </div>
 
                                 <!-- ITEM -->
@@ -179,7 +167,7 @@
                                         <span>Kepala Urusan Tata Usaha</span>
                                     </div>
 
-                                    <div class="biodata-value">Siti Nurhasanah, S.E.</div>
+                                    <div class="biodata-value" id="schoolKatu">-</div>
                                 </div>
                             </div>
                         </div>
@@ -191,5 +179,6 @@
 @endsection
 
 @push('scripts')
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <script src="{{ asset('assets/js/landing.js') }}"></script>
 @endpush

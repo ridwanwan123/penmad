@@ -50,59 +50,96 @@ L.control.zoom({
 // =============================================
 // MADRASAH DATA
 // =============================================
-const madrasahData = [
-  {
-    name: 'MAN 1 Jakarta',
-    jenjang: 'MAN',
-    location: 'Jakarta Pusat',
-    lat: -6.1864,
-    lng: 106.8342
-  },
-  {
-    name: 'MAN 2 Jakarta',
-    jenjang: 'MAN',
-    location: 'Jakarta Utara',
-    lat: -6.1382,
-    lng: 106.8631
-  },
-  {
-    name: 'MIN 21 Jakarta',
-    jenjang: 'MIN',
-    location: 'Jakarta Timur',
-    lat: -6.2253,
-    lng: 106.9004
-  },
-  {
-    name: 'MIN 22 Jakarta',
-    jenjang: 'MIN',
-    location: 'Jakarta Barat',
-    lat: -6.1683,
-    lng: 106.7588
-  },
-  {
-    name: 'MTsN 23 Jakarta',
-    jenjang: 'MTsN',
-    location: 'Jakarta Selatan',
-    lat: -6.2615,
-    lng: 106.8106
-  },
-  {
-    name: 'MTsN 13 Jakarta',
-    jenjang: 'MTsN',
-    location: 'Jakarta Timur',
-    lat: -6.2100,
-    lng: 106.8456
+let madrasahData = [];
+const markers = [];
+
+const markerCluster = L.markerClusterGroup({
+  chunkedLoading: true,
+  spiderfyOnMaxZoom: true,
+  showCoverageOnHover: false,
+  zoomToBoundsOnClick: true
+});
+
+function renderMarkers() {
+
+  markerCluster.clearLayers();
+
+  madrasahData.forEach(item => {
+
+    const color = getJenjangColor(item.jenjang);
+
+    const marker = L.marker([
+      parseFloat(item.latitude),
+      parseFloat(item.longitude)
+    ], {
+      icon: createIcon(color)
+    });
+
+    marker.bindPopup(`
+      <div>
+        <strong>${item.nama_madrasah}</strong><br/>
+        <small>${item.jenjang} - ${item.kota}</small>
+      </div>
+    `);
+
+    marker.on('click', () => {
+
+      updateSidebar(item);
+
+      map.flyTo([
+        parseFloat(item.latitude),
+        parseFloat(item.longitude)
+      ], 13, {
+        duration: 1.5
+      });
+
+    });
+
+    markerCluster.addLayer(marker);
+
+    markers.push({
+      marker,
+      data: item
+    });
+
+  });
+
+  if (!map.hasLayer(markerCluster)) {
+    map.addLayer(markerCluster);
   }
-];
+}
+
+async function loadMadrasahData() {
+
+  try {
+
+    const response = await fetch('/data/madrasah.json');
+
+    madrasahData = await response.json();
+
+    renderMarkers();
+
+    if (madrasahData.length > 0) {
+      updateSidebar(madrasahData[0]);
+    }
+
+  } catch (error) {
+
+    console.error('Gagal load data madrasah:', error);
+
+  }
+}
+
+loadMadrasahData();
 
 function getJenjangColor(jenjang) {
   switch (jenjang) {
-    case 'MAN':
-      return '#10b981'; // hijau
-    case 'MIN':
+    case 'MA':
+      return '#3b82f6'; // hijau
+    case 'MI':
       return '#f59e0b'; // gold
-    case 'MTsN':
-      return '#3b82f6'; // biru
+    case 'MTs':
+      return '#10b981'; // biru
     default:
       return '#64748b';
   }
@@ -131,43 +168,36 @@ function createIcon(color) {
 // =============================================
 function updateSidebar(data) {
 
-  document.getElementById('schoolName').innerText = data.name;
+  // NAMA MADRASAH
+  document.getElementById('schoolName').innerText =
+    data.nama_madrasah;
+
+  // KOTA
   document.getElementById('schoolLocation').innerHTML = `
-        <i class="bi bi-geo-alt-fill"></i>
-        ${data.location}
-    `;
+      <i class="bi bi-geo-alt-fill"></i>
+      ${data.kota}
+  `;
 
-  document.getElementById('prestasiTotal').innerText = data.prestasi;
-  document.getElementById('prestasiUnggulan').innerText = data.unggulan;
-  document.getElementById('siswaPrestasi').innerText = data.siswa;
-  document.getElementById('capaianRata').innerText = data.capaian;
+  // ALAMAT
+  document.getElementById('schoolAddress').innerText =
+    `${data.kecamatan}, ${data.kelurahan}`;
+
+  // NPSN
+  document.getElementById('schoolNpsn').innerText =
+    data.npsn ?? '-';
+
+  // STATUS
+  document.getElementById('schoolStatus').innerText =
+    data.status ?? '-';
+
+  // KEPALA MADRASAH
+  document.getElementById('schoolKamad').innerText =
+    data.kamad ?? '-';
+
+  // KATU
+  document.getElementById('schoolKatu').innerText =
+    data.katu ?? '-';
 }
-
-// =============================================
-// MARKERS
-// =============================================
-madrasahData.forEach(item => {
-
-  const color = getJenjangColor(item.jenjang);
-
-  const marker = L.marker([item.lat, item.lng], {
-    icon: createIcon(color)
-  }).addTo(map);
-
-  marker.bindPopup(`
-    <div>
-      <strong>${item.name}</strong><br/>
-      <small>${item.jenjang} - ${item.location}</small>
-    </div>
-  `);
-
-  marker.on('click', () => {
-    updateSidebar(item);
-    map.flyTo([item.lat, item.lng], 13, { duration: 1.5 });
-  });
-
-});
-
 // =============================================
 // GEOJSON DKI JAKARTA
 // =============================================
@@ -220,17 +250,24 @@ searchInput.addEventListener('keyup', function () {
 
   const keyword = this.value.toLowerCase();
 
-  const found = madrasahData.find(item =>
-    item.name.toLowerCase().includes(keyword)
+  const found = markers.find(item =>
+    item.data.nama_madrasah.toLowerCase().includes(keyword)
   );
 
   if (found) {
-    updateSidebar(found);
 
-    map.flyTo([found.lat, found.lng], 13, {
+    updateSidebar(found.data);
+
+    map.flyTo([
+      parseFloat(found.data.latitude),
+      parseFloat(found.data.longitude)
+    ], 13, {
       duration: 1.5
     });
+
+    found.marker.openPopup();
   }
+
 });
 
 // =============================================
@@ -291,9 +328,12 @@ resetControl.onAdd = function () {
   div.innerHTML = `<i class="bi bi-arrow-counterclockwise"></i>`;
 
   div.onclick = () => {
+
     map.flyTo([-6.2088, 106.8456], 11, {
       duration: 1.2
     });
+
+    updateSidebar(madrasahData[0]);
   };
 
   return div;
