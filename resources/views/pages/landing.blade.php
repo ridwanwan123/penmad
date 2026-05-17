@@ -56,13 +56,13 @@
                             </div>
 
                             <div class="legend-item">
-                                <span class="legend-color min"></span>
-                                MIN
+                                <span class="legend-color mtsn"></span>
+                                MTsN
                             </div>
 
                             <div class="legend-item">
-                                <span class="legend-color mtsn"></span>
-                                MTsN
+                                <span class="legend-color min"></span>
+                                MIN
                             </div>
                         </div>
 
