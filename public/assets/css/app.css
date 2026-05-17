@@ -125,18 +125,15 @@ body::before {
     box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
 }
 
-.btn-login {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    border: none;
-    color: white;
-    border-radius: 16px;
-    font-weight: 600;
+.penmad-logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
     transition: 0.3s ease;
 }
 
-.btn-login:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+.penmad-logo:hover {
+    transform: scale(1.05);
 }
 
 /* FOOTER */
@@ -262,4 +259,45 @@ body::before {
     text-align: center;
     color: #94a3b8;
     font-size: 0.9rem;
+}
+
+/* PENMAD LOGO */
+.footer-penmad-logo-wrapper {
+    margin-top: 25px;
+}
+
+.footer-penmad-logo {
+    width: 240px;
+    max-width: 100%;
+    object-fit: contain;
+    background: #d7d7d7bf;
+    padding: 10px;
+    border-radius: 16px;
+}
+
+/* KEMENAG AREA */
+.footer-kemenag {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.footer-kemenag-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 10px;
+    border-radius: 16px;
+}
+
+.footer-office-title {
+    margin: 0;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.footer-kemenag small {
+    color: #94a3b8;
 }

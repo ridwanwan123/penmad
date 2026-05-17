@@ -85,10 +85,7 @@
                 </ul>
 
                 <div class="mt-4 mt-lg-0">
-                    <button class="btn btn-login px-4 py-2">
-                        <i class="bi bi-box-arrow-in-right me-2"></i>
-                        Login
-                    </button>
+                    <img src="{{ asset('assets/images/penmad.png') }}" alt="Logo Penmad" class="penmad-logo">
                 </div>
             </div>
         </div>
@@ -100,21 +97,27 @@
     <!-- FOOTER -->
     <footer class="footer-section">
         <div class="container-fluid px-lg-5 px-5">
-            <div class="row g-4">
+            <div class="row g-5">
+
                 <!-- BRAND -->
                 <div class="col-lg-4">
-                    <div class="footer-brand d-flex align-items-start gap-3">
+                    <div class="footer-brand">
 
-                        <!-- LOGO -->
-                        <img src="{{ asset('assets/images/kemenag.png') }}" alt="logo" class="footer-logo" />
+                        <!-- TITLE -->
+                        <h5 class="footer-title">
+                            BIDANG PENDIDIKAN MADRASAH
+                        </h5>
 
-                        <div>
-                            <h5 class="footer-title">BIDANG PENDIDIKAN MADRASAH</h5>
+                        <p class="footer-desc">
+                            Sistem informasi terintegrasi yang menyajikan profil
+                            Bidang Pendidikan Madrasah, struktur organisasi,
+                            serta berbagai aplikasi layanan pendidikan.
+                        </p>
 
-                            <p class="footer-desc">
-                                Sistem informasi terintegrasi yang menyajikan profil Bidang Pendidikan Madrasah,
-                                Struktur organisasi, serta berbagai aplikasi layanan pendidikan.
-                            </p>
+                        <!-- LOGO PENMAD -->
+                        <div class="footer-penmad-logo-wrapper">
+                            <img src="{{ asset('assets/images/penmad.png') }}" alt="Logo Penmad"
+                                class="footer-penmad-logo">
                         </div>
 
                     </div>
@@ -147,13 +150,23 @@
 
                 <!-- KONTAK -->
                 <div class="col-lg-4">
-                    <h6 class="footer-heading">
-                        <i class="bi bi-geo-alt-fill me-2"></i>
-                        Kontak & Sosial Media
-                    </h6>
+                    <!-- LOGO KEMENAG -->
+                    <div class="footer-kemenag">
+                        <img src="{{ asset('assets/images/kemenag.png') }}" alt="Logo Kemenag"
+                            class="footer-kemenag-logo">
+
+                        <div>
+                            <h6 class="footer-office-title">
+                                Kanwil Kementerian Agama
+                            </h6>
+
+                            <small>Provinsi DKI Jakarta</small>
+                        </div>
+                    </div>
 
                     <p class="footer-address">
-                        Jalan D.I. Panjaitan Nomor 10, Cipinang Cempedak, Jatinegara,
+                        Jalan D.I. Panjaitan Nomor 10,
+                        Cipinang Cempedak, Jatinegara,
                         Jakarta Timur, DKI Jakarta (13340)
                     </p>
 
@@ -167,12 +180,13 @@
                         <small>@penmad_kanwil</small>
                     </div>
                 </div>
+
             </div>
 
             <!-- BOTTOM -->
             <div class="footer-bottom mt-4">
                 <p class="mb-0">
-                    © 2026 Bidang Pendidikan Madrasah Kanwil Kemenag Prov. DKI Jakarta • All Rights Reserved
+                    © 2026 Bidang Pendidikan Madrasah Kanwil Kemenag Prov. DKI Jakarta
                 </p>
             </div>
         </div>
