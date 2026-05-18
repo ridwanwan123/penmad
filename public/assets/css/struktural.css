@@ -98,6 +98,34 @@
     color: var(--gray);
 }
 
+/* ============================= */
+/* NIP KEPALA BIDANG */
+/* ============================= */
+
+.kepala-nip {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    font-family: monospace;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* ============================= */
+/* NIP KETIMKER */
+/* ============================= */
+
+.ketimker-nip {
+    margin-top: 6px;
+    font-size: 0.68rem;
+    font-family: monospace;
+    color: #64748b;
+    font-weight: 600;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -117,7 +145,18 @@
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 700;
-    margin-bottom: -14px;
+    margin-bottom: -5px;
+    z-index: 2;
+}
+
+.jabatan-label-bidang {
+    background: linear-gradient(135deg, var(--primary), #065f46);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: -25px;
     z-index: 2;
 }
 
@@ -146,18 +185,42 @@
 
 .ketimker-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
     align-items: start;
+    width: 100%;
 }
 
 /* COLUMN */
 
 .ketimker-column {
+    min-width: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.org-card,
+.staff-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* biar text tidak bikin card melebar */
+.org-card h5,
+.org-card p,
+.staff-name,
+.staff-position,
+.staff-nip,
+.ketimker-nip {
+    word-break: break-word;
+}
+
+/* garis connector */
+.main-horizontal-line {
+    width: 92%;
+    max-width: 100%;
 }
 
 .mini-vertical-line {

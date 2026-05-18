@@ -27,15 +27,19 @@
             <div class="org-wrapper">
                 <!-- KEPALA -->
                 <div class="kepala-wrapper">
-                    <div class="jabatan-label">KEPALA BIDANG</div>
+                    <div class="jabatan-label-bidang">KEPALA BIDANG</div>
 
                     <div class="kepala-card">
-                        <img src="assets/images/avatar.png" alt="" />
+                        <img src="{{ asset('assets/images/profile/kabid.jpg') }}" alt="" />
 
                         <div>
-                            <h3>Hj. Viola Cempaka, S.Pd., M.Pd.</h3>
+                            <h5 style="font-size: 1.2rem;">
+                                <b>Viola Cempaka, S.E., M.Pd.</b>
+                            </h5>
 
-                            <p>Kepala Bidang Pendidikan Madrasah</p>
+                            <p>Kepala Bidang <br /> Pendidikan Madrasah</p>
+
+                            <div class="kepala-nip"> NIP. 198006142003122002 </div>
 
                             <span class="status-badge">
                                 <i class="bi bi-check-circle-fill"></i>
@@ -53,7 +57,6 @@
 
                 <!-- GRID -->
                 <div class="ketimker-grid">
-                    <!-- ITEM -->
                     <!-- 1 -->
                     <div class="ketimker-column">
                         <div class="mini-vertical-line"></div>
@@ -61,11 +64,15 @@
                         <div class="org-card">
                             <div class="jabatan-label">KETIMKER 1</div>
 
-                            <img src="assets/images/avatar.png" alt="" />
+                            <img src="{{ asset('assets/images/profile/saepul.jpeg') }}" alt="" />
 
-                            <h5>Drs. Ahmad Fauzi, M.Pd.</h5>
+                            <h5>Saepul, S.Pd., M.M.</h5>
 
-                            <p>Ketua Tim Kerja Kurikulum</p>
+                            <p>Tim Kerja Kurikulum</p>
+
+                            <div class="ketimker-nip">
+                                NIP. 198105072007101002
+                            </div>
 
                             <div class="icon-circle">
                                 <i class="bi bi-journal-bookmark-fill"></i>
@@ -75,46 +82,46 @@
                         <div class="staff-connector"></div>
 
                         <div class="staff-card">
-                            <div class="staff-title">STAFF</div>
+                            <div class="staff-title">STAFF TIM</div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/arif.jpg') }}" class="staff-avatar" />
 
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
-                                </div>
-                            </div>
-                            <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
-                                <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">Moch. Arief Hidayat, M.Pd.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 197809232005011002
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/umam.jpg') }}" class="staff-avatar" />
 
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">
+                                        Khairul Umam I.A
+                                    </div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 198405292009011009
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/hanum.jpg') }}" class="staff-avatar" />
 
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">
+                                        Fitriani Dewi Hanum, S.E.
+                                    </div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">NIP. 199009252025052002</div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -125,58 +132,71 @@
                         <div class="org-card">
                             <div class="jabatan-label">KETIMKER 2</div>
 
-                            <img src="assets/images/avatar.png" alt="" />
+                            <img src="{{ asset('assets/images/profile/hery.jpg') }}" alt="" />
 
-                            <h5>Siti Nurazizah, M.Pd.</h5>
+                            <h5>A. Hery Fathurrochman, M.A.</h5>
 
-                            <p>Ketua Tim Kerja Kesiswaan</p>
+                            <p> Tim Kelembagaan & Sistem Informasi Madrasah</p>
 
-                            <div class="icon-circle gold">
-                                <i class="bi bi-trophy-fill"></i>
+                            <div class="ketimker-nip">
+                                NIP. 197612132006041006
+                            </div>
+
+                            <div class="icon-circle blue">
+                                <i class="bi bi-diagram-3-fill"></i>
                             </div>
                         </div>
 
                         <div class="staff-connector"></div>
 
                         <div class="staff-card">
-                            <div class="staff-title">STAFF</div>
+                            <div class="staff-title">STAFF TIM</div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/rofiq.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
-                                </div>
-                            </div>
-                            <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
-                                <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">
+                                        M. Rofiq Burhani, S.Pd.I.
+                                    </div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 198101292024211005
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/nova.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">
+                                        Novaliza, S.E.
+                                    </div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 198211022009012007
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/fitri.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">Fitri Rochmah, S.E.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 198307122003122001
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="staff-item">
+                                <img src="{{ asset('assets/images/profile/supri.jpg') }}" class="staff-avatar" />
+                                <div class="staff-info">
+                                    <div class="staff-name">Supriyanto, S.E.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 198004182009011012
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -189,62 +209,75 @@
                         <div class="org-card">
                             <div class="jabatan-label">KETIMKER 3</div>
 
-                            <img src="assets/images/avatar.png" alt="" />
+                            <img src="{{ asset('assets/images/profile/rizqi.jpg') }}" alt="" />
 
-                            <h5>Faizal Rahman, M.Pd.</h5>
+                            <h5 style="font-size: 0.78rem;">
+                                Rizqi Fardiansyah, S.Pd., M.A.P.
+                            </h5>
 
-                            <p>Ketua Tim Kerja Sarana & Prasarana</p>
+                            <p>Tim Kerja Kesiswaan</p>
 
-                            <div class="icon-circle blue">
-                                <i class="bi bi-building-fill"></i>
+                            <div class="ketimker-nip">
+                                NIP. 198603162005011001
+                            </div>
+
+                            <div class="icon-circle gold">
+                                <i class="bi bi-trophy-fill"></i>
                             </div>
                         </div>
 
                         <div class="staff-connector"></div>
 
                         <div class="staff-card">
-                            <div class="staff-title">STAFF</div>
+                            <div class="staff-title">STAFF TIM</div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/apris.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">
-                                        Pranata Komputer Ahli Pertama
+                                    <div class="staff-name">Apris Hidayat, S.T.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 198102032008011010
                                     </div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
-                                </div>
-                            </div>
-                            <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
-                                <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Staff Sarana & Prasarana</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/rifa.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Staff Sarana & Prasarana</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">
+                                        Siti Ri’atul Adawiyah, S.E.
+                                    </div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 199301062025052001
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/faqih.jpeg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Staff Sarana & Prasarana</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">Faqih Khairul Fikri, S.Psi.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 198608072006041005
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="staff-item">
+                                <img src="{{ asset('assets/images/profile/sahrul.jpg') }}" class="staff-avatar" />
+                                <div class="staff-info">
+                                    <div class="staff-name">Sahrul Muit, S.H.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. -
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
 
@@ -255,58 +288,69 @@
                         <div class="org-card">
                             <div class="jabatan-label">KETIMKER 4</div>
 
-                            <img src="assets/images/avatar.png" alt="" />
+                            <img src="{{ asset('assets/images/profile/pur.jpg') }}" alt="" />
 
-                            <h5>Dewi Khairunnisa, M.Pd.</h5>
+                            <h5>Sri Purnomowati, S.E., M.M.</h5>
 
-                            <p>Ketua Tim Kerja Guru</p>
+                            <p>Tim Kerja Sarana & Prasarana</p>
 
-                            <div class="icon-circle">
-                                <i class="bi bi-mortarboard-fill"></i>
+                            <div class="ketimker-nip">
+                                NIP. 197510162009012003
+                            </div>
+
+                            <div class="icon-circle blue">
+                                <i class="bi bi-building-fill"></i>
                             </div>
                         </div>
 
                         <div class="staff-connector"></div>
 
                         <div class="staff-card">
-                            <div class="staff-title">STAFF</div>
+                            <div class="staff-title">STAFF TIM</div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/ratri.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
-                                </div>
-                            </div>
-                            <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
-                                <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">Ratri Kiswandari</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 196811251989032003
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/alfi.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">Alfi Fadlil, S.E.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 199309142023211027
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/syifa.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">Syifa Ardiansyah, S.M.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 199909162025211023
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="staff-item">
+                                <img src="{{ asset('assets/images/profile/rian.jpg') }}" class="staff-avatar" />
+                                <div class="staff-info">
+                                    <div class="staff-name">
+                                        Rian Tri Prasetio, S.Kom.
+                                    </div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 199512142025051003
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -319,60 +363,72 @@
                         <div class="org-card">
                             <div class="jabatan-label">KETIMKER 5</div>
 
-                            <img src="assets/images/avatar.png" alt="" />
+                            <img src="{{ asset('assets/images/profile/anang.jpg') }}" alt="" />
 
-                            <h5>Rizki Maulana, M.Pd.</h5>
+                            <h5>Anang Setiawan, S.T., M.A.P.</h5>
 
-                            <p>Ketua Tim Kerja Tenaga Pendidikan</p>
+                            <p>Tim Kerja Guru</p>
 
-                            <div class="icon-circle gold">
-                                <i class="bi bi-people-fill"></i>
+                            <div class="ketimker-nip">
+                                NIP. 19712142009011001
+                            </div>
+
+                            <div class="icon-circle">
+                                <i class="bi bi-mortarboard-fill"></i>
                             </div>
                         </div>
 
                         <div class="staff-connector"></div>
 
                         <div class="staff-card">
-                            <div class="staff-title">STAFF</div>
+                            <div class="staff-title">STAFF TIM</div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/riki.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
-                                </div>
-                            </div>
-                            <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
-                                <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">
+                                        Riki Rochmilaningsih, S.E.
+                                    </div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 198105132006042023
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/dini.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">Dini Dinahastuti, S.Ak.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 199710202025052005
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
+                                <img src="{{ asset('assets/images/profile/farel.jpg') }}" class="staff-avatar" />
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">Moh. Farel Ardana, S.T.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 200108292025051006
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="staff-item">
+                                <img src="{{ asset('assets/images/profile/ama.jpeg') }}" class="staff-avatar" />
+                                <div class="staff-info">
+                                    <div class="staff-name">Ama Gusti Azir, S.Pd.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 199303132025211054
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -383,64 +439,68 @@
                         <div class="org-card">
                             <div class="jabatan-label">KETIMKER 6</div>
 
-                            <img src="assets/images/avatar.png" alt="" />
+                            <img src="{{ asset('assets/images/profile/jiat.jpg') }}" alt="" />
 
-                            <h5>Nadia Putri, M.Pd.</h5>
+                            <h5>Jiat Munjat, S.Pd.I.</h5>
 
-                            <p>Ketua Tim Kerja Informasi & Kelembagaan</p>
+                            <p>Tim Kerja Tenaga Kependidikan</p>
 
-                            <div class="icon-circle blue">
-                                <i class="bi bi-diagram-3-fill"></i>
+                            <div class="ketimker-nip">
+                                NIP. 198212232005011002
+                            </div>
+
+                            <div class="icon-circle gold">
+                                <i class="bi bi-people-fill"></i>
                             </div>
                         </div>
 
                         <div class="staff-connector"></div>
 
                         <div class="staff-card">
-                            <div class="staff-title">STAFF</div>
+                            <div class="staff-title">STAFF TIM</div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/salam.jpg') }}" class="staff-avatar" />
 
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
-                                </div>
-                            </div>
-                            <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
-
-                                <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">Abdus Salam, S.E., M.M.</div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 198602022009101001
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/ridwan.jpg') }}" class="staff-avatar" />
 
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">
+                                        Muhamad Ridwan, S.Tr.Kom.
+                                    </div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">
+                                        NIP. 200104102025051007
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="staff-item">
-                                <img src="assets/images/avatar.png" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/elen.jpg') }}" class="staff-avatar" />
 
                                 <div class="staff-info">
-                                    <div class="staff-name">Siti Rahmawati</div>
-                                    <div class="staff-position">Operator Data Pendidikan</div>
-                                    <div class="staff-nip">NIP. 198707182011012003</div>
+                                    <div class="staff-name">
+                                        Eilien Dwi Khairina, S.Tr.Li.
+                                    </div>
+                                    <div class="staff-position">Anggota</div>
+                                    <div class="staff-nip">NIP. -</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="scroll-hint">
                 ← Geser ke samping untuk melihat struktur →
             </div>
@@ -471,7 +531,7 @@
                     </div>
 
                     <div class="stat-info">
-                        <h3>24</h3>
+                        <h3>22</h3>
                         <p>Staff</p>
                     </div>
                 </div>
@@ -495,7 +555,7 @@
                     </div>
 
                     <div class="stat-info">
-                        <h3>32</h3>
+                        <h3>30</h3>
                         <p>Total Pegawai</p>
                     </div>
                 </div>
