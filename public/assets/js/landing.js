@@ -261,7 +261,7 @@ searchInput.addEventListener('keyup', function () {
     map.flyTo([
       parseFloat(found.data.latitude),
       parseFloat(found.data.longitude)
-    ], 13, {
+    ], map.getZoom(), {
       duration: 1.5
     });
 
