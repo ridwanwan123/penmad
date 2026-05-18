@@ -89,7 +89,7 @@ function renderMarkers() {
       map.flyTo([
         parseFloat(item.latitude),
         parseFloat(item.longitude)
-      ], 13, {
+      ], map.getZoom(), {
         duration: 1.5
       });
 
