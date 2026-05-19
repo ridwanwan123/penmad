@@ -66,7 +66,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/coming-soon') }}">
+                        <a class="nav-link {{ request()->is('layanan-digitalisasi') ? 'active-link' : '' }}"
+                            href="{{ url('/layanan-digitalisasi') }}">
                             Pusat Aplikasi
                         </a>
                     </li>
@@ -78,7 +79,8 @@
                     </li> --}}
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/coming-soon') }}">
+                        <a class="nav-link {{ request()->is('kontak') ? 'active-link' : '' }}"
+                            href="{{ url('/kontak') }}">
                             Kontak
                         </a>
                     </li>

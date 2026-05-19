@@ -10,6 +10,14 @@ Route::get('/struktur-organisasi', function () {
     return view('pages.struktur-organisasi');
 });
 
+Route::get('/layanan-digitalisasi', function () {
+    return view('pages.layanan-digitalisasi');
+});
+
+Route::get('/kontak', function () {
+    return view('pages.kontak');
+});
+
 Route::get('/404', function () {
     return view('pages.404');
 });
