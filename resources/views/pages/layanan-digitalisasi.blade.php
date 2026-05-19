@@ -57,7 +57,7 @@
                         dan struktur kepegawaian di lingkungan madrasah.
                     </p>
 
-                    <a href="#" class="app-button">
+                    <a href="{{ url('coming-soon') }}" class="app-button">
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -79,7 +79,9 @@
                         Guru dan Tenaga Kependidikan Non ASN secara transparan.
                     </p>
 
-                    <a href="#" class="app-button">
+                    <a href="https://ump-gtk.penmad-dki.org/login" target="_blank" rel="noopener noreferrer"
+                        class="app-button">
+
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -101,7 +103,7 @@
                         dan publikasi prestasi madrasah secara digital.
                     </p>
 
-                    <a href="#" class="app-button">
+                    <a href="{{ url('coming-soon') }}" class="app-button">
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -109,7 +111,7 @@
             </div>
 
             <!-- STATISTICS -->
-            <div class="stats-wrapper">
+            {{-- <div class="stats-wrapper">
 
                 <div class="stat-box">
                     <i class="bi bi-building"></i>
@@ -147,7 +149,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
 
             <!-- FEATURES -->
             <div class="feature-wrapper">
