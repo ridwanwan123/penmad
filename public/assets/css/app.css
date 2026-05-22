@@ -302,12 +302,10 @@ body::before {
     color: #94a3b8;
 }
 
-
 /* =========================
    MOBILE NAVBAR FIX
 ========================= */
 @media (max-width: 991.98px) {
-
     .custom-navbar {
         padding: 10px 0;
     }
@@ -357,10 +355,10 @@ body::before {
     /* COLLAPSE MENU */
     .navbar-collapse {
         margin-top: 18px;
-        background: rgba(255,255,255,0.96);
+        background: rgba(255, 255, 255, 0.96);
         padding: 18px;
         border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
     .navbar-nav {
@@ -378,4 +376,4 @@ body::before {
         height: 38px;
         margin-top: 10px;
     }
-}   
+}
