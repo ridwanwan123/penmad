@@ -301,3 +301,81 @@ body::before {
 .footer-kemenag small {
     color: #94a3b8;
 }
+
+
+/* =========================
+   MOBILE NAVBAR FIX
+========================= */
+@media (max-width: 991.98px) {
+
+    .custom-navbar {
+        padding: 10px 0;
+    }
+
+    .custom-navbar .container-fluid {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    /* BRAND */
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px !important;
+        max-width: 80%;
+    }
+
+    .navbar-logo {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+    }
+
+    .navbar-brand h5 {
+        font-size: 1rem;
+        line-height: 1.2;
+        margin-bottom: 2px;
+    }
+
+    .navbar-brand small {
+        font-size: 0.72rem;
+        display: block;
+        line-height: 1.2;
+    }
+
+    /* TOGGLER */
+    .navbar-toggler {
+        padding: 0;
+        margin-left: auto;
+    }
+
+    .navbar-toggler i {
+        font-size: 2rem !important;
+        color: var(--navy);
+    }
+
+    /* COLLAPSE MENU */
+    .navbar-collapse {
+        margin-top: 18px;
+        background: rgba(255,255,255,0.96);
+        padding: 18px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .navbar-nav {
+        gap: 10px !important;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 14px 16px !important;
+        border-radius: 12px;
+    }
+
+    /* LOGO PENMAD */
+    .penmad-logo {
+        height: 38px;
+        margin-top: 10px;
+    }
+}   
