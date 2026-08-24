@@ -208,8 +208,76 @@
         color: var(--text-dim);
         font-size: 14px;
         line-height: 1.6;
-        margin-bottom: 22px;
+        margin-bottom: 14px;
         min-height: 42px;
+    }
+
+    .jmc-card .jmc-date {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background: rgba(79, 209, 197, 0.08);
+        border: 1px solid rgba(79, 209, 197, 0.25);
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-bottom: 20px;
+    }
+
+    .jmc-date-status {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10.5px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #7cd992;
+    }
+
+    .jmc-status-dot {
+        width: 7px;
+        height: 7px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: #7cd992;
+        box-shadow: 0 0 0 0 rgba(124, 217, 146, 0.6);
+        animation: jmc-status-pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes jmc-status-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(124, 217, 146, 0.55);
+        }
+        70% {
+            box-shadow: 0 0 0 6px rgba(124, 217, 146, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(124, 217, 146, 0);
+        }
+    }
+
+    .jmc-date-range {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.02em;
+        color: var(--star-teal);
+        line-height: 1.4;
+        padding-left: 14px;
+    }
+
+    .jmc-date-range i {
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .jmc-status-dot {
+            animation: none;
+        }
     }
 
     .jmc-card a {
@@ -384,6 +452,10 @@
                 <div class="jmc-icon-orb"><i class="bi bi-moon-stars-fill"></i></div>
                 <h3>Keagamaan</h3>
                 <p class="jmc-desc">Lomba bidang keagamaan madrasah.</p>
+                <div class="jmc-date">
+                    <span class="jmc-date-status"><span class="jmc-status-dot"></span>Pendaftaran Dibuka</span>
+                    <span class="jmc-date-range"><i class="bi bi-calendar-event"></i> 26 – 31 Agustus 2026</span>
+                </div>
                 <a href="https://forms.gle/SUAFnT591WTUBCu67" target="_blank" rel="noopener">
                     Daftar sekarang <i class="bi bi-arrow-right"></i>
                 </a>
@@ -394,6 +466,10 @@
                 <div class="jmc-icon-orb"><i class="bi bi-eyedropper"></i></div>
                 <h3>Sains</h3>
                 <p class="jmc-desc">Kompetisi sains dan eksperimen.</p>
+                <div class="jmc-date">
+                    <span class="jmc-date-status"><span class="jmc-status-dot"></span>Pendaftaran Dibuka</span>
+                    <span class="jmc-date-range"><i class="bi bi-calendar-event"></i> 14 – 18 September 2026</span>
+                </div>
                 <a href="https://forms.gle/BhvWnEv8wR9PtgWW7" target="_blank" rel="noopener">
                     Daftar sekarang <i class="bi bi-arrow-right"></i>
                 </a>
@@ -404,6 +480,10 @@
                 <div class="jmc-icon-orb"><i class="bi bi-trophy-fill"></i></div>
                 <h3>Olahraga</h3>
                 <p class="jmc-desc">Cabang lomba olahraga madrasah.</p>
+                <div class="jmc-date">
+                    <span class="jmc-date-status"><span class="jmc-status-dot"></span>Pendaftaran Dibuka</span>
+                    <span class="jmc-date-range"><i class="bi bi-calendar-event"></i> 24 – 31 Agustus 2026</span>
+                </div>
                 <a href="https://forms.gle/AQPm5drV4QoJ5kJ78" target="_blank" rel="noopener">
                     Daftar sekarang <i class="bi bi-arrow-right"></i>
                 </a>
@@ -418,6 +498,10 @@
                 <div class="jmc-icon-orb"><i class="bi bi-palette-fill"></i></div>
                 <h3>Seni</h3>
                 <p class="jmc-desc">Kompetisi seni dan kreativitas.</p>
+                <div class="jmc-date">
+                    <span class="jmc-date-status"><span class="jmc-status-dot"></span>Pendaftaran Dibuka</span>
+                    <span class="jmc-date-range"><i class="bi bi-calendar-event"></i> 24 – 31 Agustus 2026</span>
+                </div>
                 <a href="https://forms.gle/gpVFAphuLHNUnZpV6" target="_blank" rel="noopener">
                     Daftar sekarang <i class="bi bi-arrow-right"></i>
                 </a>
@@ -428,6 +512,10 @@
                 <div class="jmc-icon-orb"><i class="bi bi-binoculars-fill"></i></div>
                 <h3>Riset</h3>
                 <p class="jmc-desc">Lomba karya riset siswa.</p>
+                <div class="jmc-date">
+                    <span class="jmc-date-status"><span class="jmc-status-dot"></span>Pendaftaran Dibuka</span>
+                    <span class="jmc-date-range"><i class="bi bi-calendar-event"></i> 24 Agustus – 3 September 2026</span>
+                </div>
                 <a href="https://forms.gle/CnfoYqLf9YpESvg17" target="_blank" rel="noopener">
                     Daftar sekarang <i class="bi bi-arrow-right"></i>
                 </a>
@@ -438,6 +526,10 @@
                 <div class="jmc-icon-orb"><i class="bi bi-robot"></i></div>
                 <h3>Robotik</h3>
                 <p class="jmc-desc">Kompetisi robotik madrasah.</p>
+                <div class="jmc-date">
+                    <span class="jmc-date-status"><span class="jmc-status-dot"></span>Pendaftaran Dibuka</span>
+                    <span class="jmc-date-range"><i class="bi bi-calendar-event"></i> 24 – 31 Agustus 2026</span>
+                </div>
                 <a href="https://forms.gle/VmiKko8YBu3L62Dy5" target="_blank" rel="noopener">
                     Daftar sekarang <i class="bi bi-arrow-right"></i>
                 </a>
@@ -448,6 +540,10 @@
                 <div class="jmc-icon-orb"><i class="bi bi-mortarboard-fill"></i></div>
                 <h3>GTK</h3>
                 <p class="jmc-desc">Lomba untuk Guru dan Tenaga Kependidikan.</p>
+                <div class="jmc-date">
+                    <span class="jmc-date-status"><span class="jmc-status-dot"></span>Pendaftaran Dibuka</span>
+                    <span class="jmc-date-range"><i class="bi bi-calendar-event"></i> 24 – 31 Agustus 2026</span>
+                </div>
                 <a href="https://forms.gle/7Tw1PpzqLjZRgyDV9" target="_blank" rel="noopener">
                     Daftar sekarang <i class="bi bi-arrow-right"></i>
                 </a>
@@ -457,7 +553,7 @@
     </div>
 </div>
 
-<a href="{{ asset('assets/files/juknis-jmc-2026.pdf') }}" target="_blank" rel="noopener" class="jmc-fab">
+<a href="https://s.id/Juknis-JMC2026" target="_blank" rel="noopener" class="jmc-fab">
     <i class="bi bi-file-earmark-arrow-down-fill" aria-hidden="true"></i>
     <span>Unduh Juknis JMC 2026</span>
 </a>
