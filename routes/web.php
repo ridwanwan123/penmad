@@ -25,3 +25,7 @@ Route::get('/404', function () {
 Route::get('/coming-soon', function () {
     return view('pages.comingsoon');
 });
+
+Route::get('/jmc-2026', function () {
+    return view('pages.jmc');
+});

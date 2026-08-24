@@ -39,7 +39,10 @@
 
                             <p>Kepala Bidang <br /> Pendidikan Madrasah</p>
 
-                            <div class="kepala-nip"> NIP. 198006142003122002 </div>
+                            <div class="kepala-nip">
+                                <i class="bi bi-card-text"></i>
+                                <span>NIP. 198006142003122002</span>
+                            </div>
 
                             <span class="status-badge">
                                 <i class="bi bi-check-circle-fill"></i>
@@ -68,14 +71,14 @@
 
                             <h5>Saepul, S.Pd., M.M.</h5>
 
-                            <p>Tim Kerja Kurikulum</p>
-
-                            <div class="ketimker-nip">
-                                NIP. 198105072007101002
+                            <div class="team-badge">
+                                <span class="team-badge-icon"><i class="bi bi-journal-bookmark-fill"></i></span>
+                                <span class="team-badge-text">Tim Kerja Kurikulum</span>
                             </div>
 
-                            <div class="icon-circle">
-                                <i class="bi bi-journal-bookmark-fill"></i>
+                            <div class="ketimker-nip">
+                                <i class="bi bi-card-text"></i>
+                                <span>NIP. 198105072007101002</span>
                             </div>
                         </div>
 
@@ -111,7 +114,7 @@
                             </div>
 
                             <div class="staff-item">
-                                <img src="{{ asset('assets/images/profile/hanum.jpg') }}" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/hanum.JPG') }}" class="staff-avatar" />
 
                                 <div class="staff-info">
                                     <div class="staff-name">
@@ -136,14 +139,14 @@
 
                             <h5>A. Hery Fathurrochman, M.A.</h5>
 
-                            <p> Tim Kelembagaan & Sistem Informasi Madrasah</p>
-
-                            <div class="ketimker-nip">
-                                NIP. 197612132006041006
+                            <div class="team-badge blue">
+                                <span class="team-badge-icon"><i class="bi bi-diagram-3-fill"></i></span>
+                                <span class="team-badge-text">Tim Kelembagaan & Sistem Informasi Madrasah</span>
                             </div>
 
-                            <div class="icon-circle blue">
-                                <i class="bi bi-diagram-3-fill"></i>
+                            <div class="ketimker-nip">
+                                <i class="bi bi-card-text"></i>
+                                <span>NIP. 197612132006041006</span>
                             </div>
                         </div>
 
@@ -153,7 +156,7 @@
                             <div class="staff-title">STAFF TIM</div>
 
                             <div class="staff-item">
-                                <img src="{{ asset('assets/images/profile/rofiq.jpg') }}" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/rofiq.JPG') }}" class="staff-avatar" />
                                 <div class="staff-info">
                                     <div class="staff-name">
                                         M. Rofiq Burhani, S.Pd.I.
@@ -215,14 +218,14 @@
                                 Rizqi Fardiansyah, S.Pd., M.A.P.
                             </h5>
 
-                            <p>Tim Kerja Kesiswaan</p>
-
-                            <div class="ketimker-nip">
-                                NIP. 198603162005011001
+                            <div class="team-badge gold">
+                                <span class="team-badge-icon"><i class="bi bi-trophy-fill"></i></span>
+                                <span class="team-badge-text">Tim Kerja Kesiswaan</span>
                             </div>
 
-                            <div class="icon-circle gold">
-                                <i class="bi bi-trophy-fill"></i>
+                            <div class="ketimker-nip">
+                                <i class="bi bi-card-text"></i>
+                                <span>NIP. 198603162005011001</span>
                             </div>
                         </div>
 
@@ -243,7 +246,7 @@
                             </div>
 
                             <div class="staff-item">
-                                <img src="{{ asset('assets/images/profile/rifa.jpg') }}" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/rifa.JPG') }}" class="staff-avatar" />
                                 <div class="staff-info">
                                     <div class="staff-name">
                                         Siti Ri’atul Adawiyah, S.E.
@@ -267,7 +270,7 @@
                             </div>
 
                             <div class="staff-item">
-                                <img src="{{ asset('assets/images/profile/sahrul.jpg') }}" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/sahrul.JPG') }}" class="staff-avatar" />
                                 <div class="staff-info">
                                     <div class="staff-name">Sahrul Muit, S.H.</div>
                                     <div class="staff-position">Anggota</div>
@@ -292,14 +295,14 @@
 
                             <h5>Sri Purnomowati, S.E., M.M.</h5>
 
-                            <p>Tim Kerja Sarana & Prasarana</p>
-
-                            <div class="ketimker-nip">
-                                NIP. 197510162009012003
+                            <div class="team-badge blue">
+                                <span class="team-badge-icon"><i class="bi bi-building-fill"></i></span>
+                                <span class="team-badge-text">Tim Kerja Sarana & Prasarana</span>
                             </div>
 
-                            <div class="icon-circle blue">
-                                <i class="bi bi-building-fill"></i>
+                            <div class="ketimker-nip">
+                                <i class="bi bi-card-text"></i>
+                                <span>NIP. 197510162009012003</span>
                             </div>
                         </div>
 
@@ -342,7 +345,7 @@
                             </div>
 
                             <div class="staff-item">
-                                <img src="{{ asset('assets/images/profile/rian.jpg') }}" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/rian.JPG') }}" class="staff-avatar" />
                                 <div class="staff-info">
                                     <div class="staff-name">
                                         Rian Tri Prasetio, S.Kom.
@@ -367,14 +370,14 @@
 
                             <h5>Anang Setiawan, S.T., M.A.P.</h5>
 
-                            <p>Tim Kerja Guru</p>
-
-                            <div class="ketimker-nip">
-                                NIP. 19712142009011001
+                            <div class="team-badge">
+                                <span class="team-badge-icon"><i class="bi bi-mortarboard-fill"></i></span>
+                                <span class="team-badge-text">Tim Kerja Guru</span>
                             </div>
 
-                            <div class="icon-circle">
-                                <i class="bi bi-mortarboard-fill"></i>
+                            <div class="ketimker-nip">
+                                <i class="bi bi-card-text"></i>
+                                <span>NIP. 19712142009011001</span>
                             </div>
                         </div>
 
@@ -397,7 +400,7 @@
                             </div>
 
                             <div class="staff-item">
-                                <img src="{{ asset('assets/images/profile/dini.jpg') }}" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/dini.JPG') }}" class="staff-avatar" />
                                 <div class="staff-info">
                                     <div class="staff-name">Dini Dinahastuti, S.Ak.</div>
                                     <div class="staff-position">Anggota</div>
@@ -408,7 +411,7 @@
                             </div>
 
                             <div class="staff-item">
-                                <img src="{{ asset('assets/images/profile/farel.jpg') }}" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/farel.JPG') }}" class="staff-avatar" />
                                 <div class="staff-info">
                                     <div class="staff-name">Moh. Farel Ardana, S.T.</div>
                                     <div class="staff-position">Anggota</div>
@@ -443,14 +446,14 @@
 
                             <h5>Jiat Munjat, S.Pd.I.</h5>
 
-                            <p>Tim Kerja Tenaga Kependidikan</p>
-
-                            <div class="ketimker-nip">
-                                NIP. 198212232005011002
+                            <div class="team-badge gold">
+                                <span class="team-badge-icon"><i class="bi bi-people-fill"></i></span>
+                                <span class="team-badge-text">Tim Kerja Tenaga Kependidikan</span>
                             </div>
 
-                            <div class="icon-circle gold">
-                                <i class="bi bi-people-fill"></i>
+                            <div class="ketimker-nip">
+                                <i class="bi bi-card-text"></i>
+                                <span>NIP. 198212232005011002</span>
                             </div>
                         </div>
 
@@ -472,7 +475,7 @@
                             </div>
 
                             <div class="staff-item">
-                                <img src="{{ asset('assets/images/profile/ridwan.jpg') }}" class="staff-avatar" />
+                                <img src="{{ asset('assets/images/profile/ridwan.JPG') }}" class="staff-avatar" />
 
                                 <div class="staff-info">
                                     <div class="staff-name">

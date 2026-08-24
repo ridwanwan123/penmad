@@ -103,11 +103,22 @@
 /* ============================= */
 
 .kepala-nip {
-    margin-top: 10px;
-    font-size: 0.82rem;
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #f1f5f9;
+    color: #334155;
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-size: 0.8rem;
     font-family: monospace;
-    color: #64748b;
-    font-weight: 600;
+    font-weight: 700;
+}
+
+.kepala-nip i {
+    color: #94a3b8;
+    font-size: 0.85rem;
 }
 
 /* ============================= */
@@ -115,15 +126,29 @@
 /* ============================= */
 
 .ketimker-nip {
-    margin-top: 6px;
-    font-size: 0.68rem;
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f1f5f9;
+    color: #334155;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 0.66rem;
     font-family: monospace;
-    color: #64748b;
-    font-weight: 600;
+    font-weight: 700;
+    max-width: 100%;
+}
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.ketimker-nip i {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+.ketimker-nip span {
+    white-space: normal;
+    word-break: break-word;
 }
 
 .status-badge {
@@ -209,7 +234,7 @@
 
 /* biar text tidak bikin card melebar */
 .org-card h5,
-.org-card p,
+.team-badge-text,
 .staff-name,
 .staff-position,
 .staff-nip,
@@ -256,35 +281,56 @@
     line-height: 1.45;
 }
 
-.org-card p {
-    margin-top: 8px;
-    color: var(--gray);
-    min-height: 52px;
-    font-size: 0.74rem;
-    line-height: 1.45;
-    font-weight: 500;
+/* ============================= */
+/* TEAM BADGE (nama tim kerja + ikon jadi satu, biar kebaca jelas) */
+/* ============================= */
+
+.team-badge {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 16px;
+    padding: 8px 12px 8px 8px;
 }
 
-.icon-circle {
-    width: 60px;
-    height: 60px;
-    margin: 18px auto 0;
+.team-badge-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(16, 185, 129, 0.1);
+    background: rgba(16, 185, 129, 0.18);
     color: var(--primary);
-    font-size: 1.3rem;
+    font-size: 0.95rem;
 }
 
-.icon-circle.gold {
+.team-badge-text {
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #0f172a;
+}
+
+.team-badge.gold {
     background: rgba(245, 158, 11, 0.12);
+}
+
+.team-badge.gold .team-badge-icon {
+    background: rgba(245, 158, 11, 0.22);
     color: var(--gold);
 }
 
-.icon-circle.blue {
+.team-badge.blue {
     background: rgba(37, 99, 235, 0.12);
+}
+
+.team-badge.blue .team-badge-icon {
+    background: rgba(37, 99, 235, 0.22);
     color: var(--blue);
 }
 
@@ -369,13 +415,15 @@
 
 /* NIP */
 .staff-nip {
-    font-size: 0.62rem;
+    font-size: 0.64rem;
     font-family: monospace;
-    color: #64748b;
+    color: #475569;
+    font-weight: 600;
 
-    white-space: nowrap; /* ini kunci supaya 1 baris */
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal; /* jangan dipotong ellipsis, angka NIP harus utuh */
+    overflow: visible;
+    word-break: break-word;
+    line-height: 1.4;
 }
 
 /* optional: bikin card lebih stabil */
@@ -496,9 +544,13 @@
         flex: 0 0 auto;
     }
 
+    .connector-wrapper {
+        align-items: flex-start; /* biar sejajar sama grid yang rata kiri, bukan center viewport */
+    }
+
     .main-horizontal-line {
-        width: 100%;
-        min-width: 1600px; /* penting biar garis tetap panjang */
+        width: 1410px; /* 6 kolom x 220px + 5 gap x 18px, harus sama persis dengan lebar .ketimker-grid */
+        min-width: 1410px;
     }
 }
 
