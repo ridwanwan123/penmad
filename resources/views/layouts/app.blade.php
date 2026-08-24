@@ -72,11 +72,12 @@
                         </a>
                     </li>
 
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Statistik
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('jmc-2026') ? 'active-link' : '' }}"
+                            href="{{ url('/jmc-2026') }}">
+                            JMC 2026
                         </a>
-                    </li> --}}
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('kontak') ? 'active-link' : '' }}"

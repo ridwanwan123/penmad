@@ -294,6 +294,66 @@
     .footer-section {
         margin-top: 0;
     }
+
+    .jmc-fab {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 1020;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--star-gold), #f7d178);
+        color: var(--space-deep);
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        box-shadow: 0 12px 30px -8px rgba(240, 180, 41, 0.6);
+        animation: jmc-fab-pulse 2.4s ease-in-out infinite;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .jmc-fab i {
+        font-size: 18px;
+    }
+
+    .jmc-fab:hover {
+        transform: translateY(-3px);
+        color: var(--space-deep);
+        box-shadow: 0 16px 36px -8px rgba(240, 180, 41, 0.75);
+    }
+
+    .jmc-fab:focus-visible {
+        outline: 2px solid var(--star-teal);
+        outline-offset: 3px;
+    }
+
+    @keyframes jmc-fab-pulse {
+        0%, 100% {
+            box-shadow: 0 12px 30px -8px rgba(240, 180, 41, 0.6), 0 0 0 0 rgba(240, 180, 41, 0.35);
+        }
+        50% {
+            box-shadow: 0 12px 30px -8px rgba(240, 180, 41, 0.6), 0 0 0 12px rgba(240, 180, 41, 0);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .jmc-fab span {
+            display: none;
+        }
+
+        .jmc-fab {
+            padding: 14px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .jmc-fab {
+            animation: none;
+        }
+    }
     </style>
 @endpush
 
@@ -396,6 +456,11 @@
         </div>
     </div>
 </div>
+
+<a href="{{ asset('assets/files/juknis-jmc-2026.pdf') }}" target="_blank" rel="noopener" class="jmc-fab">
+    <i class="bi bi-file-earmark-arrow-down-fill" aria-hidden="true"></i>
+    <span>Unduh Juknis JMC 2026</span>
+</a>
 
 @endsection
 
