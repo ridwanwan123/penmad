@@ -4,6 +4,50 @@
     <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+    <style>
+        /* MAP LOADING OVERLAY */
+        .map-loading-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            transition: opacity 0.35s ease;
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .map-loading-overlay.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .map-loading-spinner {
+            width: 42px;
+            height: 42px;
+            border: 4px solid rgba(16, 185, 129, 0.2);
+            border-top-color: #10b981;
+            border-radius: 50%;
+            animation: map-spin 0.8s linear infinite;
+        }
+
+        .map-loading-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        @keyframes map-spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -67,6 +111,12 @@
                         </div>
 
                         <div id="map"></div>
+
+                        <!-- LOADING OVERLAY -->
+                        <div class="map-loading-overlay" id="mapLoadingOverlay">
+                            <div class="map-loading-spinner"></div>
+                            <span class="map-loading-text">Memuat data madrasah...</span>
+                        </div>
                     </div>
                 </div>
 
