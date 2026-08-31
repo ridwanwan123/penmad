@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'presma' => [
+        'url' => env('PRESMA_API_URL'),
+        'key' => env('PRESMA_API_KEY'),
+    ],
+
 ];
