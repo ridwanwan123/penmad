@@ -242,18 +242,17 @@ fetch(geojsonUrl)
     .then((data) => {
         const geoLayer = L.geoJSON(data, {
             style: {
-                color: "#ffffff",
-                weight: 2,
-                fillColor: "#10b981",
-                fillOpacity: 0.25,
+                color: "#10b981",
+                weight: 0.5,
+                fillOpacity: 0,
             },
 
             onEachFeature: function (feature, layer) {
                 layer.on({
                     mouseover: function (e) {
                         e.target.setStyle({
-                            fillOpacity: 0.5,
-                            fillColor: "#f59e0b",
+                            weight: 4,
+                            color: "#f59e0b",
                         });
                     },
 
