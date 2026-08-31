@@ -95,24 +95,29 @@
                         <div class="map-legend">
                             <h6>Jenjang Madrasah</h6>
                             <div class="legend-item">
-                                <span class="legend-color man"></span>
-                                MAN
+                                <span class="legend-color ma"></span>
+                                MA
                             </div>
 
                             <div class="legend-item">
-                                <span class="legend-color mtsn"></span>
-                                MTsN
+                                <span class="legend-color mts"></span>
+                                MTs
                             </div>
 
                             <div class="legend-item">
-                                <span class="legend-color min"></span>
-                                MIN
+                                <span class="legend-color mi"></span>
+                                MI
+                            </div>
+
+                            <div class="legend-item">
+                                <span class="legend-color ra"></span>
+                                RA
                             </div>
                         </div>
 
                         <div id="map"
                             data-geojson-url="{{ asset('geojson/dki-jakarta.json') }}"
-                            data-madrasah-url="{{ asset('data/madrasah.json') }}">
+                            data-madrasah-url="{{ route('landing.madrasahs') }}">
                         </div>
 
                         <!-- LOADING OVERLAY -->
@@ -125,7 +130,7 @@
 
                 <!-- SIDEBAR -->
                 <div class="col-lg-5">
-                    <div class="info-card sticky-top">
+                        <div class="info-card sticky-top">
                         <!-- HEADER -->
                         <div class="school-header">
                             <!-- LOGO -->

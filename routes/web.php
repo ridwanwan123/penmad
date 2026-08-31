@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 Route::get('/', function () {
     return view('pages.landing');
@@ -29,3 +30,5 @@ Route::get('/coming-soon', function () {
 Route::get('/jmc-2026', function () {
     return view('pages.jmc');
 });
+
+Route::get('/data/madrasahs', [MainController::class, 'madrasahsData'])->name('landing.madrasahs');

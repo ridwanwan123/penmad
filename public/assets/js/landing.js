@@ -1,32 +1,4 @@
 // =============================================
-// ANIMATED COUNTER
-// =============================================
-function animateCounter(id, end) {
-    let current = 0;
-    const element = document.getElementById(id);
-
-    // Guard: elemen counter tidak ada di halaman ini, jangan lanjut
-    if (!element) {
-        return;
-    }
-
-    const increment = end / 50;
-
-    const timer = setInterval(() => {
-        current += increment;
-
-        if (current >= end) {
-            current = end;
-            clearInterval(timer);
-        }
-
-        element.innerText = Math.floor(current);
-    }, 30);
-}
-
-animateCounter("totalMadrasah", 312);
-
-// =============================================
 // MAP LOADING OVERLAY
 // =============================================
 const mapLoadingOverlay = document.getElementById("mapLoadingOverlay");
@@ -62,7 +34,7 @@ const mapLoadingSafetyTimer = setTimeout(hideMapLoadingOverlay, 15000);
 // URL DATA (dari Blade, pakai asset() Laravel)
 // =============================================
 const mapEl = document.getElementById("map");
-const madrasahDataUrl = mapEl?.dataset.madrasahUrl || "/data/madrasah.json";
+const madrasahDataUrl = mapEl?.dataset.madrasahUrl || "/data/madrasahs";
 const geojsonUrl = mapEl?.dataset.geojsonUrl || "/geojson/dki-jakarta.json";
 
 // =============================================
@@ -177,11 +149,13 @@ loadMadrasahData();
 function getJenjangColor(jenjang) {
     switch (jenjang) {
         case "MA":
-            return "#3b82f6"; // hijau
+            return "#3b82f6"; // biru
         case "MI":
             return "#f59e0b"; // gold
         case "MTs":
-            return "#10b981"; // biru
+            return "#10b981"; // hijau
+        case "RA":
+            return "#ef4444"; // merah
         default:
             return "#64748b";
     }
@@ -290,69 +264,30 @@ searchInput.addEventListener("keyup", function () {
         item.data.nama_madrasah.toLowerCase().includes(keyword),
     );
 
-    if (found) {
-        updateSidebar(found.data);
-
-        map.flyTo(
-            [parseFloat(found.data.latitude), parseFloat(found.data.longitude)],
-            map.getZoom(),
-            {
-                duration: 1.5,
-            },
-        );
-
-        found.marker.openPopup();
+    if (!found) {
+        return;
     }
-});
 
-// =============================================
-// CHART.JS
-// =============================================
-const ctx = document.getElementById("achievementChart");
+    updateSidebar(found.data);
 
-// Guard: canvas chart tidak ada di halaman ini (mis. bukan halaman profil),
-// jangan lanjut supaya tidak menghentikan script sesudahnya (reset button dll).
-if (ctx) {
-    new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: ["Akademik", "Non Akademik", "Tahfidz"],
-            datasets: [
-                {
-                    label: "Prestasi",
-                    data: [92, 84, 95],
-                    borderRadius: 12,
-                    backgroundColor: ["#10b981", "#f59e0b", "#0f172a"],
-                },
-            ],
-        },
+    const targetLatLng = [
+        parseFloat(found.data.latitude),
+        parseFloat(found.data.longitude),
+    ];
 
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false,
-                },
-            },
-
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 100,
-                    grid: {
-                        color: "rgba(0,0,0,0.05)",
-                    },
-                },
-
-                x: {
-                    grid: {
-                        display: false,
-                    },
-                },
-            },
-        },
+    // flyTo dulu supaya animasinya smooth (pan + zoom bertahap),
+    // baru setelah animasi selesai, pastikan marker pecah dari
+    // cluster-nya (zoomToShowLayer) dan buka popup-nya.
+    map.flyTo(targetLatLng, 16, {
+        duration: 1.5,
     });
-}
+
+    map.once("moveend", () => {
+        markerCluster.zoomToShowLayer(found.marker, () => {
+            found.marker.openPopup();
+        });
+    });
+});
 
 // RESET MAP BUTTON
 // RESET MAP BUTTON (PREMIUM VERSION)
