@@ -110,7 +110,10 @@
                             </div>
                         </div>
 
-                        <div id="map"></div>
+                        <div id="map"
+                            data-geojson-url="{{ asset('geojson/dki-jakarta.json') }}"
+                            data-madrasah-url="{{ asset('data/madrasah.json') }}">
+                        </div>
 
                         <!-- LOADING OVERLAY -->
                         <div class="map-loading-overlay" id="mapLoadingOverlay">

@@ -5,6 +5,11 @@ function animateCounter(id, end) {
     let current = 0;
     const element = document.getElementById(id);
 
+    // Guard: elemen counter tidak ada di halaman ini, jangan lanjut
+    if (!element) {
+        return;
+    }
+
     const increment = end / 50;
 
     const timer = setInterval(() => {
@@ -52,6 +57,13 @@ function hideMapLoadingOverlay() {
 // Jaga-jaga: kalau salah satu proses lambat/gagal, overlay tetap
 // otomatis hilang setelah 15 detik supaya user tidak terjebak selamanya.
 const mapLoadingSafetyTimer = setTimeout(hideMapLoadingOverlay, 15000);
+
+// =============================================
+// URL DATA (dari Blade, pakai asset() Laravel)
+// =============================================
+const mapEl = document.getElementById("map");
+const madrasahDataUrl = mapEl?.dataset.madrasahUrl || "/data/madrasah.json";
+const geojsonUrl = mapEl?.dataset.geojsonUrl || "/geojson/dki-jakarta.json";
 
 // =============================================
 // MAP INITIALIZATION
@@ -144,7 +156,7 @@ function renderMarkers() {
 
 async function loadMadrasahData() {
     try {
-        const response = await fetch("/data/madrasah.json");
+        const response = await fetch(madrasahDataUrl);
 
         madrasahData = await response.json();
 
@@ -225,7 +237,7 @@ function updateSidebar(data) {
 // =============================================
 // GEOJSON DKI JAKARTA
 // =============================================
-fetch("geojson/dki-jakarta.json")
+fetch(geojsonUrl)
     .then((response) => response.json())
     .then((data) => {
         const geoLayer = L.geoJSON(data, {
@@ -299,45 +311,49 @@ searchInput.addEventListener("keyup", function () {
 // =============================================
 const ctx = document.getElementById("achievementChart");
 
-new Chart(ctx, {
-    type: "bar",
-    data: {
-        labels: ["Akademik", "Non Akademik", "Tahfidz"],
-        datasets: [
-            {
-                label: "Prestasi",
-                data: [92, 84, 95],
-                borderRadius: 12,
-                backgroundColor: ["#10b981", "#f59e0b", "#0f172a"],
-            },
-        ],
-    },
-
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                display: false,
-            },
+// Guard: canvas chart tidak ada di halaman ini (mis. bukan halaman profil),
+// jangan lanjut supaya tidak menghentikan script sesudahnya (reset button dll).
+if (ctx) {
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["Akademik", "Non Akademik", "Tahfidz"],
+            datasets: [
+                {
+                    label: "Prestasi",
+                    data: [92, 84, 95],
+                    borderRadius: 12,
+                    backgroundColor: ["#10b981", "#f59e0b", "#0f172a"],
+                },
+            ],
         },
 
-        scales: {
-            y: {
-                beginAtZero: true,
-                max: 100,
-                grid: {
-                    color: "rgba(0,0,0,0.05)",
-                },
-            },
-
-            x: {
-                grid: {
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
                     display: false,
                 },
             },
+
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    grid: {
+                        color: "rgba(0,0,0,0.05)",
+                    },
+                },
+
+                x: {
+                    grid: {
+                        display: false,
+                    },
+                },
+            },
         },
-    },
-});
+    });
+}
 
 // RESET MAP BUTTON
 // RESET MAP BUTTON (PREMIUM VERSION)
