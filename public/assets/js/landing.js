@@ -81,10 +81,11 @@ const markerCluster = L.markerClusterGroup({
     zoomToBoundsOnClick: true,
 });
 
-function renderMarkers() {
+function renderMarkers(dataset = madrasahData) {
     markerCluster.clearLayers();
+    markers.length = 0;
 
-    madrasahData.forEach((item) => {
+    dataset.forEach((item) => {
         const color = getJenjangColor(item.jenjang);
 
         const marker = L.marker(
@@ -127,21 +128,95 @@ function renderMarkers() {
 }
 
 async function loadMadrasahData() {
+    hideErrorBanner();
+
     try {
         const response = await fetch(madrasahDataUrl);
 
+        // fetch() tidak otomatis throw untuk status HTTP error (403/500/dst),
+        // jadi harus dicek manual di sini.
+        if (!response.ok) {
+            throw new Error(`Gagal mengambil data madrasah (HTTP ${response.status})`);
+        }
+
         madrasahData = await response.json();
 
+        if (!Array.isArray(madrasahData)) {
+            throw new Error("Format data madrasah tidak sesuai");
+        }
+
         renderMarkers();
+        populateKotaOptions();
 
         if (madrasahData.length > 0) {
             updateSidebar(madrasahData[0]);
+        } else {
+            clearSidebarLoadingState();
         }
     } catch (error) {
         console.error("Gagal load data madrasah:", error);
+        showDataError();
     } finally {
         markMapTaskDone("madrasahData");
     }
+}
+
+// Tampilkan pesan error yang jelas ke user (bukan cuma console.error diam-diam),
+// baik di banner atas map maupun di sidebar info card.
+function showDataError() {
+    clearSidebarLoadingState();
+
+    document.getElementById("schoolName").innerText = "Data tidak dapat dimuat";
+    document.getElementById("schoolLocation").innerHTML =
+        '<i class="bi bi-geo-alt-fill"></i> -';
+    document.getElementById("schoolAddress").innerText =
+        "Terjadi gangguan saat mengambil data madrasah. Coba muat ulang.";
+    document.getElementById("schoolNpsn").innerText = "-";
+    document.getElementById("schoolStatus").innerText = "-";
+    document.getElementById("schoolKamad").innerText = "-";
+    document.getElementById("schoolKatu").innerText = "-";
+
+    const banner = document.getElementById("mapErrorBanner");
+    banner?.classList.add("is-visible");
+}
+
+function hideErrorBanner() {
+    document.getElementById("mapErrorBanner")?.classList.remove("is-visible");
+}
+
+document.getElementById("mapRetryBtn")?.addEventListener("click", () => {
+    // Tampilkan overlay loading lagi supaya user tahu proses ulang sedang berjalan
+    mapLoadTasks.madrasahData = false;
+    mapLoadingOverlay?.classList.remove("is-hidden");
+
+    loadMadrasahData();
+});
+
+// Isi opsi dropdown "Kota" otomatis berdasarkan data yang ke-load,
+// supaya tidak hardcode dan selalu sinkron sama data asli.
+function populateKotaOptions() {
+    const kotaSelect = document.getElementById("filterKota");
+    if (!kotaSelect) return;
+
+    // Bersihkan opsi dinamis lama (kecuali opsi default "Semua Kota")
+    // supaya aman dipanggil berkali-kali, misal saat retry setelah error.
+    kotaSelect.querySelectorAll("option:not(:first-child)").forEach((opt) => opt.remove());
+
+    const kotaList = [...new Set(madrasahData.map((item) => item.kota).filter(Boolean))].sort();
+
+    kotaList.forEach((kota) => {
+        const option = document.createElement("option");
+        option.value = kota;
+        option.textContent = kota;
+        kotaSelect.appendChild(option);
+    });
+}
+
+// Lepas efek "buram + pulse" begitu data pertama kali berhasil ditampilkan
+function clearSidebarLoadingState() {
+    document
+        .querySelectorAll(".info-value-loading")
+        .forEach((el) => el.classList.remove("info-value-loading"));
 }
 
 loadMadrasahData();
@@ -183,6 +258,8 @@ function createIcon(color) {
 // UPDATE SIDEBAR
 // =============================================
 function updateSidebar(data) {
+    clearSidebarLoadingState();
+
     // NAMA MADRASAH
     document.getElementById("schoolName").innerText = data.nama_madrasah;
 
@@ -290,23 +367,89 @@ searchInput.addEventListener("keyup", function () {
 });
 
 // RESET MAP BUTTON
-// RESET MAP BUTTON (PREMIUM VERSION)
-const resetControl = L.control({ position: "topright" });
+// Sekarang berupa tombol HTML biasa (bukan Leaflet control) supaya bisa
+// disandingkan langsung dengan tombol filter di .map-icon-controls.
+document.getElementById("resetMapBtn")?.addEventListener("click", () => {
+    map.flyTo([-6.2088, 106.8456], 11, {
+        duration: 1.2,
+    });
 
-resetControl.onAdd = function () {
-    const div = L.DomUtil.create("div", "custom-reset-btn");
+    updateSidebar(madrasahData[0]);
+});
 
-    div.innerHTML = `<i class="bi bi-arrow-counterclockwise"></i>`;
+// =============================================
+// FILTER (Jenjang / Status / Kota)
+// =============================================
+const filterToggleBtn = document.getElementById("filterToggleBtn");
+const filterPanel = document.getElementById("filterPanel");
+const filterJenjang = document.getElementById("filterJenjang");
+const filterStatus = document.getElementById("filterStatus");
+const filterKota = document.getElementById("filterKota");
+const filterResetBtn = document.getElementById("filterResetBtn");
 
-    div.onclick = () => {
-        map.flyTo([-6.2088, 106.8456], 11, {
-            duration: 1.2,
-        });
+// Toggle buka/tutup panel filter
+filterToggleBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    filterPanel.classList.toggle("is-open");
+    filterToggleBtn.classList.toggle("is-active");
+});
 
-        updateSidebar(madrasahData[0]);
-    };
+// Klik di luar panel -> tutup panel
+document.addEventListener("click", (e) => {
+    if (!filterPanel.contains(e.target) && e.target !== filterToggleBtn) {
+        filterPanel.classList.remove("is-open");
+        filterToggleBtn.classList.remove("is-active");
+    }
+});
 
-    return div;
-};
+function applyFilters() {
+    const jenjang = filterJenjang.value;
+    const status = filterStatus.value;
+    const kota = filterKota.value;
 
-resetControl.addTo(map);
+    const filtered = madrasahData.filter((item) => {
+        const matchJenjang = !jenjang || item.jenjang === jenjang;
+        const matchStatus =
+            !status ||
+            (item.status ?? "").toLowerCase().includes(status.toLowerCase());
+        const matchKota = !kota || item.kota === kota;
+
+        return matchJenjang && matchStatus && matchKota;
+    });
+
+    renderMarkers(filtered);
+
+    if (filtered.length > 0) {
+        updateSidebar(filtered[0]);
+    } else {
+        // Tidak ada hasil yang cocok dengan filter
+        document.getElementById("schoolName").innerText = "Tidak ditemukan";
+        document.getElementById("schoolLocation").innerHTML =
+            '<i class="bi bi-geo-alt-fill"></i> -';
+        document.getElementById("schoolAddress").innerText =
+            "Coba ubah kombinasi filter.";
+        document.getElementById("schoolNpsn").innerText = "-";
+        document.getElementById("schoolStatus").innerText = "-";
+        document.getElementById("schoolKamad").innerText = "-";
+        document.getElementById("schoolKatu").innerText = "-";
+    }
+
+    // Update badge jumlah filter aktif di tombol funnel
+    const activeCount = [jenjang, status, kota].filter(Boolean).length;
+    const badge = document.getElementById("filterCountBadge");
+    if (badge) {
+        badge.textContent = activeCount;
+        badge.classList.toggle("is-visible", activeCount > 0);
+    }
+}
+
+filterJenjang?.addEventListener("change", applyFilters);
+filterStatus?.addEventListener("change", applyFilters);
+filterKota?.addEventListener("change", applyFilters);
+
+filterResetBtn?.addEventListener("click", () => {
+    filterJenjang.value = "";
+    filterStatus.value = "";
+    filterKota.value = "";
+    applyFilters();
+});

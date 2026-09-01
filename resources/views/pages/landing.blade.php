@@ -47,6 +47,66 @@
         @keyframes map-spin {
             to { transform: rotate(360deg); }
         }
+
+        /* MAP ERROR BANNER */
+        .map-error-banner {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-12px);
+            z-index: 1100;
+
+            display: none;
+            align-items: center;
+            gap: 10px;
+
+            max-width: 90%;
+            padding: 12px 16px;
+
+            background: #fef2f2;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 14px;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.12);
+
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #991b1b;
+
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .map-error-banner.is-visible {
+            display: flex;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .map-error-banner i {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .map-error-banner span {
+            flex: 1;
+        }
+
+        .map-error-banner button {
+            flex-shrink: 0;
+            border: none;
+            border-radius: 8px;
+            padding: 6px 12px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .map-error-banner button:hover {
+            background: #b91c1c;
+        }
     </style>
 @endpush
 
@@ -91,9 +151,56 @@
                             <input type="text" id="searchSchool" placeholder="Cari madrasah..." />
                         </div>
 
+                        <!-- ICON CONTROLS: FILTER + RESET (kanan atas) -->
+                        <div class="map-icon-controls">
+                            <button type="button" class="custom-reset-btn" id="filterToggleBtn" title="Filter">
+                                <i class="bi bi-funnel-fill"></i>
+                                <span class="filter-count-badge" id="filterCountBadge"></span>
+                            </button>
+
+                            <button type="button" class="custom-reset-btn" id="resetMapBtn" title="Reset tampilan peta">
+                                <i class="bi bi-arrow-counterclockwise"></i>
+                            </button>
+
+                            <div class="map-filter-panel" id="filterPanel">
+                                <div class="filter-group">
+                                    <label for="filterJenjang">Jenjang</label>
+                                    <select id="filterJenjang">
+                                        <option value="">Semua Jenjang</option>
+                                        <option value="MA">MA</option>
+                                        <option value="MTs">MTs</option>
+                                        <option value="MI">MI</option>
+                                        <option value="RA">RA</option>
+                                    </select>
+                                </div>
+
+                                <div class="filter-group">
+                                    <label for="filterStatus">Status</label>
+                                    <select id="filterStatus">
+                                        <option value="">Semua Status</option>
+                                        <option value="Negeri">Negeri</option>
+                                        <option value="Swasta">Swasta</option>
+                                    </select>
+                                </div>
+
+                                <div class="filter-group">
+                                    <label for="filterKota">Kota</label>
+                                    <select id="filterKota">
+                                        <option value="">Semua Kota</option>
+                                    </select>
+                                </div>
+
+                                <button type="button" class="filter-reset-btn" id="filterResetBtn">
+                                    <i class="bi bi-x-circle"></i>
+                                    Reset Filter
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- LEGEND -->
                         <div class="map-legend">
-                            <h6>Jenjang Madrasah</h6>
+                            <span class="legend-title">Jenjang</span>
+
                             <div class="legend-item">
                                 <span class="legend-color ma"></span>
                                 MA
@@ -125,12 +232,19 @@
                             <div class="map-loading-spinner"></div>
                             <span class="map-loading-text">Memuat data madrasah...</span>
                         </div>
+
+                        <!-- ERROR BANNER (muncul kalau fetch data madrasah gagal) -->
+                        <div class="map-error-banner" id="mapErrorBanner">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            <span>Data madrasah gagal dimuat. Periksa koneksi kamu.</span>
+                            <button type="button" id="mapRetryBtn">Coba Lagi</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- SIDEBAR -->
                 <div class="col-lg-5">
-                        <div class="info-card sticky-top">
+                    <div class="info-card sticky-top">
                         <!-- HEADER -->
                         <div class="school-header">
                             <!-- LOGO -->
@@ -140,15 +254,15 @@
 
                             <!-- INFO -->
                             <div class="school-info">
-                                <h3 id="schoolName">-</h3>
+                                <h3 id="schoolName" class="info-value-loading">Memuat data</h3>
 
-                                <div class="school-location" id="schoolLocation">
+                                <div class="school-location info-value-loading" id="schoolLocation">
                                     <i class="bi bi-geo-alt-fill"></i>
-                                    -
+                                    Memuat
                                 </div>
 
-                                <p class="school-address" id="schoolAddress">
-                                    -
+                                <p class="school-address info-value-loading" id="schoolAddress">
+                                    Memuat alamat madrasah...
                                 </p>
                             </div>
                         </div>
@@ -186,7 +300,7 @@
                                         <span>NPSN</span>
                                     </div>
 
-                                    <div class="biodata-value" id="schoolNpsn">-</div>
+                                    <div class="biodata-value info-value-loading" id="schoolNpsn">••••••</div>
                                 </div>
 
                                 <!-- ITEM -->
@@ -199,7 +313,7 @@
                                         <span>Status Madrasah</span>
                                     </div>
 
-                                    <div class="biodata-value" id="schoolStatus">-</div>
+                                    <div class="biodata-value info-value-loading" id="schoolStatus">••••••</div>
                                 </div>
 
                                 <!-- ITEM -->
@@ -212,7 +326,7 @@
                                         <span>Kepala Madrasah</span>
                                     </div>
 
-                                    <div class="biodata-value" id="schoolKamad">-</div>
+                                    <div class="biodata-value info-value-loading" id="schoolKamad">••••••••••</div>
                                 </div>
 
                                 <!-- ITEM -->
@@ -225,7 +339,7 @@
                                         <span>Kepala Urusan Tata Usaha</span>
                                     </div>
 
-                                    <div class="biodata-value" id="schoolKatu">-</div>
+                                    <div class="biodata-value info-value-loading" id="schoolKatu">••••••••••</div>
                                 </div>
                             </div>
                         </div>

@@ -22,31 +22,46 @@ class MainController extends Controller
     public function madrasahsData(PresmaApiService $presma)
     {
         try {
-            $mapped = Cache::remember('landing.madrasahs', now()->addMinutes(10), function () use ($presma) {
-                $response = $presma->madrasahs();
+            // Cek cache dulu secara manual (bukan pakai Cache::remember) supaya kita
+            // bisa memutuskan sendiri: hasil kosong TIDAK disimpan ke cache, jadi
+            // request berikutnya akan coba lagi ke API alih-alih nunggu 10 menit
+            // hanya karena API sempat balikin data kosong/rusak.
+            $cached = Cache::get('landing.madrasahs');
 
-                $items = $response['data'] ?? [];
+            if ($cached !== null) {
+                return response()->json($cached);
+            }
 
-                return collect($items)
-                    ->filter(fn ($item) => !empty($item['latitude']) && !empty($item['longitude']))
-                    ->map(function ($item) {
-                        return [
-                            'id'             => $item['id'] ?? null,
-                            'jenjang'        => $item['jenjang_madrasah'] ?? null,
-                            'status'         => $item['status_madrasah'] ?? null,
-                            'nama_madrasah'  => $item['nama_madrasah'] ?? null,
-                            'npsn'           => $item['npsn'] ?? null,
-                            'kota'           => $item['kota'] ?? null,
-                            'kecamatan'      => $item['kecamatan'] ?? null,
-                            'kelurahan'      => $item['kelurahan'] ?? null,
-                            'latitude'       => $item['latitude'] ?? null,
-                            'longitude'      => $item['longitude'] ?? null,
-                            'kamad'          => $item['nama_kepala_madrasah'] ?? null,
-                            'katu'           => $item['nama_kepala_urusan_tata_usaha'] ?? null,
-                        ];
-                    })
-                    ->values();
-            });
+            $response = $presma->madrasahs();
+
+            $items = $response['data'] ?? [];
+
+            $mapped = collect($items)
+                ->filter(fn ($item) => !empty($item['latitude']) && !empty($item['longitude']))
+                ->map(function ($item) {
+                    return [
+                        'id'             => $item['id'] ?? null,
+                        'jenjang'        => $item['jenjang_madrasah'] ?? null,
+                        'status'         => $item['status_madrasah'] ?? null,
+                        'nama_madrasah'  => $item['nama_madrasah'] ?? null,
+                        'npsn'           => $item['npsn'] ?? null,
+                        'kota'           => $item['kota'] ?? null,
+                        'kecamatan'      => $item['kecamatan'] ?? null,
+                        'kelurahan'      => $item['kelurahan'] ?? null,
+                        'latitude'       => $item['latitude'] ?? null,
+                        'longitude'      => $item['longitude'] ?? null,
+                        'kamad'          => $item['nama_kepala_madrasah'] ?? null,
+                        'katu'           => $item['nama_kepala_urusan_tata_usaha'] ?? null,
+                    ];
+                })
+                ->values();
+
+            // Hanya cache kalau benar-benar dapat data. Kalau kosong (API lagi
+            // maintenance/balikin data rusak), jangan cache — biar request
+            // berikutnya coba lagi, bukan nunggu 10 menit dengan cache kosong.
+            if ($mapped->isNotEmpty()) {
+                Cache::put('landing.madrasahs', $mapped, now()->addMinutes(10));
+            }
 
             return response()->json($mapped);
         } catch (\Throwable $e) {
@@ -54,6 +69,7 @@ class MainController extends Controller
 
             // Balikin array kosong (bukan error 500) supaya peta di landing tetap
             // render normal walau API-nya lagi down, cuma datanya kosong.
+            // TIDAK di-cache, supaya request berikutnya coba lagi ke API.
             return response()->json([]);
         }
     }
